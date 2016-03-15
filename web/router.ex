@@ -24,6 +24,9 @@ defmodule JanrainGuardian.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
   end
 
   # Other scopes may use custom stacks.
