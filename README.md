@@ -1,5 +1,13 @@
 # JanrainGuardian
 
+This is a demo app showing how you can use [Janrain](http://janrain.com/) with
+[Guardian](https://github.com/ueberauth/guardian) using the
+[Janrain library](https://github.com/rickr/janrain).
+
+Check out the process step by step via the git tags step_1 through step_9.
+
+## Instructions
+
 To start your Phoenix app:
 
   1. Install dependencies with `mix deps.get`
