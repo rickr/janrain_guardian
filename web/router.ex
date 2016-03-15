@@ -13,8 +13,14 @@ defmodule JanrainGuardian.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/", JanrainGuardian do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
+    pipe_through :browser_session
 
     get "/", PageController, :index
   end

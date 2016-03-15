@@ -27,3 +27,9 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :guardian, Guardian,
+  issuer: "JanrainGuardian",
+  ttl: { 30, :days },
+  secret_key: "eb90ad5a55582700b01639a3c608e43b5487627a",
+  serializer: JanrainGuardian.GuardianSerializer
