@@ -18,6 +18,13 @@ defmodule JanrainGuardian.Router do
     plug Guardian.Plug.LoadResource
   end
 
+  pipeline :janrain do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :put_secure_browser_headers
+  end
+
   scope "/", JanrainGuardian do
     pipe_through :browser
     pipe_through :browser_session
@@ -26,8 +33,13 @@ defmodule JanrainGuardian.Router do
     resources "/users", UserController
 
     get "/login", SessionController, :new
+  end
+
+  scope "/", JanrainGuardian do
+    pipe_through :janrain
     post "/login", SessionController, :create
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", JanrainGuardian do
